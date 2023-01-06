@@ -1,6 +1,7 @@
 #include "kernel.h"
 #include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
 
 
 uint16_t* video_mem = 0;
@@ -72,5 +73,10 @@ void print(const char* str)
 void kernel_main()
 {
     terminal_initialize();
+
+    char buf[100];
+    snprintf(buf, sizeof(buf), "hi: %#010x      ", kernel_main);
+    print(buf);
+
     print("Hello world!\ntest");
 }
