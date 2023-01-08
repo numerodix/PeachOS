@@ -9,7 +9,7 @@ all: ./bin/boot.bin ./bin/kernel.bin
 	dd if=/dev/zero bs=512 count=100 >> ./bin/os.bin
 
 ./bin/kernel.bin: $(FILES)
-	i686-elf-ld -g -relocatable $(FILES) libklib_x86.a -o ./build/kernelfull.o
+	i686-elf-ld -g -relocatable $(FILES) libklib_i386.a -o ./build/kernelfull.o
 	i686-elf-gcc $(FLAGS) -T ./src/linker.ld -o ./bin/kernel.bin -ffreestanding -O0 -nostdlib ./build/kernelfull.o
 
 ./bin/boot.bin: ./src/boot/boot.asm
